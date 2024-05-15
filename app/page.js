@@ -3,10 +3,6 @@ import { useState } from "react";
 import { MdStar } from "react-icons/md";
 
 export default function Home() {
-  const [active, setActive] = useState(false);
-  const handleClick = () => {
-    setActive(true);
-  };
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -18,7 +14,7 @@ export default function Home() {
 
   const hoverText = () => {
     return (
-      <button className="px-4 py-3 border rounded-sm border-black bg-white absolute translate-x-[50%] translate-y-[50%] min-w-[max-content]">
+      <button className="px-4 py-3 border rounded-sm border-black bg-white absolute translate-x-[50%] translate-y-64 delay-300 duration-300">
         Quick view
       </button>
     );
@@ -26,6 +22,7 @@ export default function Home() {
 
   const [products, setProducts] = useState([
     {
+      id: 1,
       img: "/Stanley.webp",
       h1: "Stanley",
       p: "Quencher Recycled Stainless Steel Flowstate Tumbler, 1.18L",
@@ -41,11 +38,8 @@ export default function Home() {
         </div>
       ),
       color: (
-        <div className="flex justify-center items-center gap-3 mx-6 my-4">
-          <button
-            onClick={handleClick}
-            className="px-2 py-2 bg-[#8fbc8f] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "
-          ></button>
+        <div className="flex  items-center justify-start gap-3 mx-6 my-4">
+          <button className="px-2 py-2 bg-[#8fbc8f] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 active:bg-pink-500 "></button>
           <button className="px-2 py-2 bg-[#f5f5dc] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "></button>
           <button className="px-2 py-2 bg-[#000] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "></button>
           <button className="px-2 py-2 bg-[#ffebcd] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "></button>
@@ -53,6 +47,7 @@ export default function Home() {
       ),
     },
     {
+      id: 2,
       img: "/Anyday.webp",
       h1: "John Lewis ANYDAY",
       p: "Handheld & Foldable Desk Fan, 4 inch",
@@ -68,7 +63,7 @@ export default function Home() {
         </div>
       ),
       color: (
-        <div className="flex justify-center items-center gap-3 mx-6 my-4">
+        <div className="flex justify-start items-center gap-3 mx-6 my-4">
           <button className="px-2 py-2 bg-[#f0ffff] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1"></button>
           <button className="px-2 py-2 bg-[#a9a9a9] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "></button>
           <button className="px-2 py-2 bg-[#6495ed] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "></button>
@@ -77,6 +72,7 @@ export default function Home() {
       ),
     },
     {
+      id: 3,
       img: "/Janerio.webp",
       h1: "Sol de Janerio",
       p: "Perfume Mist Discovery Fragrance Gift Set",
@@ -84,6 +80,7 @@ export default function Home() {
       rating: "",
     },
     {
+      id: 4,
       img: "/Long.webp",
       h1: "Longchamp",
       p: "Le Pliage Original Large Shoulder Bag",
@@ -99,7 +96,7 @@ export default function Home() {
         </div>
       ),
       color: (
-        <div className="flex justify-center items-center gap-3 mx-6 my-4">
+        <div className="flex justify-start items-center gap-3 mx-6 my-4">
           <button className="px-2 py-2 bg-[#000] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1"></button>
           <button className="px-2 py-2 bg-[#191970] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "></button>
           <button className="px-2 py-2 bg-[#faebd7] border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 "></button>
@@ -110,6 +107,7 @@ export default function Home() {
       ),
     },
     {
+      id: 5,
       img: "/John.webp",
       h1: "John Lewis",
       p: "Aelia Bloom Maxi Dress",
@@ -123,8 +121,8 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center gap-8 p-16 m-16">
           <strong className="text-2xl">Popular products</strong>
           <div className="flex items-start justify-center gap-2 w-full lg:w-[60%] ">
-            {products.map((product, i) => (
-              <div key={i}>
+            {products.map((product) => (
+              <div key={product.id}>
                 {isHovering && hoverText()}
                 <div
                   onMouseOver={handleMouseOver}
@@ -145,9 +143,8 @@ export default function Home() {
                   </span>
 
                   {product.rating}
-
-                  {product.color}
                 </div>
+                <span className="">{product.color}</span>
               </div>
             ))}
           </div>

@@ -13,7 +13,7 @@ export default function Product() {
 
   const hoverText = () => {
     return (
-      <button className="px-4 py-3 border rounded-sm border-black bg-white absolute -translate-y-16">
+      <button className="px-4 py-3 border rounded-sm border-black bg-white absolute -translate-y-16 w-[220px]">
         Quick view
       </button>
     );
@@ -23,7 +23,7 @@ export default function Product() {
     {
       img: [
         { key: 1, img1: "/Stanley.webp" },
-        { key: 2, img1: "/StanleyBlack.webp" },
+        { key: 2, img2: "/StanleyBlack.webp" },
       ],
       h1: "Stanley",
       p: "Quencher Recycled Stainless Steel Flowstate Tumbler, 1.18L",
@@ -125,7 +125,7 @@ export default function Product() {
             onMouseOut={handleMouseOut}
             className=" w-[250px] mx-auto flex flex-col items-start justify-center  "
           >
-            <img src={product.img} alt="" width="250" height="333" />
+            <img src={product.img.key===1? {product.img.img1}:} alt="" width="250" height="333" />
             {isHovering && hoverText()}
 
             <button className="text-white bg-black px-4 py-3 mx-4 rounded-sm w-[220px] hover:bg-green-500 hover:text-black">

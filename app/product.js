@@ -1,12 +1,7 @@
-"use client";
 import { useState } from "react";
 import { MdStar } from "react-icons/md";
 
-export default function Home() {
-  const [active, setActive] = useState(false);
-  const handleClick = () => {
-    setActive(true);
-  };
+export default function Product() {
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -18,7 +13,7 @@ export default function Home() {
 
   const hoverText = () => {
     return (
-      <button className="px-4 py-3 border rounded-sm border-black bg-white absolute translate-x-[50%] translate-y-[50%] min-w-[max-content]">
+      <button className="px-4 py-3 border rounded-sm border-black bg-white absolute -translate-y-16">
         Quick view
       </button>
     );
@@ -26,7 +21,10 @@ export default function Home() {
 
   const [products, setProducts] = useState([
     {
-      img: "/Stanley.webp",
+      img: [
+        { key: 1, img1: "/Stanley.webp" },
+        { key: 2, img1: "/StanleyBlack.webp" },
+      ],
       h1: "Stanley",
       p: "Quencher Recycled Stainless Steel Flowstate Tumbler, 1.18L",
       price: "£44.99",
@@ -117,42 +115,36 @@ export default function Home() {
       rating: "",
     },
   ]);
+
   return (
-    <main>
-      <div className="w-full  mx-auto">
-        <div className="flex flex-col items-center justify-center gap-8 p-16 m-16">
-          <strong className="text-2xl">Popular products</strong>
-          <div className="flex items-start justify-center gap-2 w-full lg:w-[60%] ">
-            {products.map((product, i) => (
-              <div key={i}>
-                {isHovering && hoverText()}
-                <div
-                  onMouseOver={handleMouseOver}
-                  onMouseOut={handleMouseOut}
-                  className=" w-[250px] mx-auto flex flex-col items-start justify-center  "
-                >
-                  <img src={product.img} alt="" width="250" height="333" />
+    <div className="flex items-start justify-center gap-2 w-full lg:w-[60%] ">
+      {products.map((product, i) => (
+        <div key={i}>
+          <div
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            className=" w-[250px] mx-auto flex flex-col items-start justify-center  "
+          >
+            <img src={product.img} alt="" width="250" height="333" />
+            {isHovering && hoverText()}
 
-                  <button className="text-white bg-black px-4 py-3 mx-4 rounded-sm w-[220px] hover:bg-green-500 hover:text-black">
-                    Add to basket
-                  </button>
-                  <h1 className="mx-4 text-left pt-4">{product.h1}</h1>
-                  <p className="text-slate-500 px-4 py-3 border-b w-[218px]">
-                    {product.p}
-                  </p>
-                  <span className=" font-bold border-b px-4 py-3 w-[218px]">
-                    {product.price}
-                  </span>
+            <button className="text-white bg-black px-4 py-3 mx-4 rounded-sm w-[220px] hover:bg-green-500 hover:text-black">
+              Add to basket
+            </button>
+            <h1 className="mx-4 text-left pt-4">{product.h1}</h1>
+            <p className="text-slate-500 px-4 py-3 border-b w-[218px]">
+              {product.p}
+            </p>
+            <span className=" font-bold border-b px-4 py-3 w-[218px]">
+              {product.price}
+            </span>
 
-                  {product.rating}
+            {product.rating}
 
-                  {product.color}
-                </div>
-              </div>
-            ))}
+            {product.color}
           </div>
         </div>
-      </div>
-    </main>
+      ))}
+    </div>
   );
 }

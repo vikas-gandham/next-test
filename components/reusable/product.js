@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MdStar } from "react-icons/md";
+import Link from "next/link";
 
 export default function Product(props) {
   const {
@@ -26,9 +27,12 @@ export default function Product(props) {
 
   const hoverText = () => {
     return (
-      <button className="px-3 py-2 border rounded-sm border-black bg-white absolute translate-x-4 translate-y-60 delay-300 duration-300 w-[200px]">
+      <Link
+        href="https://www.johnlewis.com/"
+        className="px-3 py-2 border rounded-sm text-center border-black bg-white absolute translate-x-4 translate-y-60 delay-300 duration-300 w-[200px] transition-all animate-pulse"
+      >
         Quick view
-      </button>
+      </Link>
     );
   };
 
@@ -67,7 +71,9 @@ export default function Product(props) {
       <div className="flex items-center justify-start p-4 gap-2">
         {Array.from({ length: colorCount }, (i) => (
           <button
-            className={`px-2 py-2 border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 bg-[${colors}] `}
+            className={`px-2 py-2 border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 bg-[${colors.map(
+              (color, i) => `color`
+            )}] `}
           ></button>
         ))}
       </div>

@@ -48,7 +48,7 @@ export default function Product(props) {
 
         <div className="flex items-center justify-start p-4 gap-2">
           {variants.map((variant) => {
-            variant.color && (
+            variant.color && variant.color !== "" && (
               <button
                 onClick={() => setActiveVariant(variant)}
                 key={variant.vid}

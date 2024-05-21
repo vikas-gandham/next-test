@@ -36,26 +36,29 @@ export default function Product(props) {
         <span className=" font-bold border-b px-4 py-3 w-[218px] text-red-500">
           {activeVariant.reference_price}
         </span>
+        {rating && (
+          <div className="flex items-center justify-start px-4 py-3 border-b w-[218px]">
+            {Array.from({ length: rating }, (i) => (
+              <MdStar />
+            ))}
 
-        <div className="flex items-center justify-start px-4 py-3 border-b w-[218px]">
-          {Array.from({ length: rating }, (i) => (
-            <MdStar />
-          ))}
-
-          <span>{ratingCount}</span>
-        </div>
+            <span>{ratingCount}</span>
+          </div>
+        )}
 
         <div className="flex items-center justify-start p-4 gap-2">
-          {variants.map((variant) => (
-            <button
-              onClick={() => setActiveVariant(variant)}
-              key={variant.vid}
-              className={`px-2 py-2 border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 
-           
-             `}
-              style={{ backgroundColor: variant.color }}
-            ></button>
-          ))}
+          {variants.map((variant) => {
+            variant.color && (
+              <button
+                onClick={() => setActiveVariant(variant)}
+                key={variant.vid}
+                className={`px-2 py-2 border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 
+         
+           `}
+                style={{ backgroundColor: variant.color }}
+              ></button>
+            );
+          })}
         </div>
       </div>
     </>

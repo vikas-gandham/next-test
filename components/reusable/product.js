@@ -4,6 +4,9 @@ import { MdStar } from "react-icons/md";
 export default function Product(props) {
   const { id, title, description, rating, ratingCount, variants } = props;
   const [activeVariant, setActiveVariant] = useState(variants[0]);
+  const filteredVariant = variants.filter((obj) => {
+    return Object.values(obj).every((value) => value !== "");
+  });
 
   return (
     <>
@@ -47,18 +50,16 @@ export default function Product(props) {
         )}
 
         <div className="flex items-center justify-start p-4 gap-2">
-          {variants.map((variant) => {
-            variant.color && variant.color !== "" && (
-              <button
-                onClick={() => setActiveVariant(variant)}
-                key={variant.vid}
-                className={`px-2 py-2 border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 
+          {filteredVariant.map((variant) => (
+            <button
+              onClick={() => setActiveVariant(variant)}
+              key={variant.vid}
+              className={`px-2 py-2 border border-slate-400 rounded-full ring ring-slate-300 hover:ring-offset-1 
          
            `}
-                style={{ backgroundColor: variant.color }}
-              ></button>
-            );
-          })}
+              style={{ backgroundColor: variant.color }}
+            ></button>
+          ))}
         </div>
       </div>
     </>

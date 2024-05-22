@@ -1,4 +1,3 @@
-import Product from "@/components/reusable/product";
 import { useRef, useState } from "react";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import Product from "../reusable/product";
 
 export default function ProductCarousal() {
   const swiperRef = useRef(null);

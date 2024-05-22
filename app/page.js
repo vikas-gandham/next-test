@@ -1,13 +1,13 @@
 "use client";
 
-import ProductCarousal from "@/components/home/productCarousel";
-import Accordian from "@/components/reusable/Accordian";
+import Faqs from "@/components/home/Faqs";
+import ProductCarousal from "@/components/home/ProductCarousel";
 
 export default function Home() {
   return (
     <main>
       <ProductCarousal />
-      <Accordian />
+      <Faqs />
     </main>
   );
 }

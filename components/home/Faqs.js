@@ -28,7 +28,7 @@ export default function Faqs() {
     },
   ];
   return (
-    <div>
+    <div className="flex flex-col gap-1 m-[100px]">
       {faqData.map((data) => (
         <Accordian
           key={data.id}
